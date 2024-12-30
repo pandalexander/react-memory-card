@@ -43,6 +43,11 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
+}
+
+.game-screen {
+  margin: 10px;
 }
 
 .card-component {
@@ -69,4 +74,14 @@ img {
 .game-container {
   display: flex;
   flex-wrap: wrap;
+}
+
+.loading-screen {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to right, #2e3192, #1bffff);
+  height: 100vh;
+  width: 100vw;
 }

@@ -113,18 +113,28 @@ function App() {
   if (!isBusy) {
     return (
       <>
-        <h3>Current Score: {clickedIds.length}</h3>
-        <div className="game-container">
-          {imageSourceUrlArray.map((item) => (
-            <div key={item.id} className="card-component">
-              <h1>{item.displayName}</h1>
-              <p>id: {item.id}</p>
-              <img src={item.url} alt={item.displayName} />
-              <button onClick={() => handleClick(item.id)}>
-                Click To Select
-              </button>
-            </div>
-          ))}
+        <div className="game-screen">
+          <h3>Current Score: {clickedIds.length}</h3>
+          <div className="game-container">
+            {imageSourceUrlArray.map((item) => (
+              <div key={item.id} className="card-component">
+                <h1>{item.displayName}</h1>
+                <p>id: {item.id}</p>
+                <img src={item.url} alt={item.displayName} />
+                <button onClick={() => handleClick(item.id)}>
+                  Click To Select
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <div className="loading-screen">
+          <h1>LOADING!</h1>
         </div>
       </>
     );
