@@ -31,6 +31,7 @@ function App() {
       newData[i] = {
         displayName: data[i].displayName,
         url: allBlobUrlStrings[i],
+        id: i + 1,
       };
     }
     setImageSourceUrlArray(newData);
@@ -44,14 +45,13 @@ function App() {
   if (!isBusy) {
     return (
       <>
-        <div className="card-component">
-          <h1>{imageSourceUrlArray[0].displayName}</h1>
-          <img src={imageSourceUrlArray[0].url} alt="" />
-        </div>
-        <div className="card-component">
-          <h1>{imageSourceUrlArray[1].displayName}</h1>
-          <img src={imageSourceUrlArray[1].url} alt="" />
-        </div>
+        {imageSourceUrlArray.map((item) => (
+          <div key={item.id} className="card-component">
+            <h1>{item.displayName}</h1>
+            <p>id: {item.id}</p>
+            <img src={item.url} alt={item.displayName} />
+          </div>
+        ))}
       </>
     );
   }
