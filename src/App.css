@@ -65,3 +65,8 @@ img {
   object-fit: fill;
   border-radius: 5px;
 }
+
+.game-container {
+  display: flex;
+  flex-wrap: wrap;
+}
