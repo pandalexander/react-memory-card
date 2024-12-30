@@ -100,7 +100,16 @@ function App() {
   function handleClick(id) {
     if (!clickedIds.includes(id)) {
       setClickedIds((clickedIds) => [...clickedIds, id]);
-      shuffleCardOrder();
+
+      if (clickedIds.length === 11) {
+        setClickedIds([]);
+        let temporaryArray = imageSourceUrlArray;
+        sortArrayByProperty(temporaryArray);
+        setImageSourceUrlArray(temporaryArray);
+        alert("YOU WIN! CONGRATS!");
+      } else {
+        shuffleCardOrder();
+      }
     } else {
       setClickedIds([]);
       let temporaryArray = imageSourceUrlArray;
@@ -118,8 +127,8 @@ function App() {
           <div className="game-container">
             {imageSourceUrlArray.map((item) => (
               <div key={item.id} className="card-component">
-                <h1>{item.displayName}</h1>
-                <p>id: {item.id}</p>
+                {/* <h1>{item.displayName}</h1> */}
+                {/* <p>id: {item.id}</p> */}
                 <img src={item.url} alt={item.displayName} />
                 <button onClick={() => handleClick(item.id)}>
                   Click To Select
