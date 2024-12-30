@@ -46,6 +46,13 @@
   margin: 0;
 }
 
+.title-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .game-screen {
   margin: 10px;
 }
@@ -73,6 +80,7 @@ img {
 
 .game-container {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
 }
 

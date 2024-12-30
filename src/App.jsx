@@ -132,6 +132,14 @@ function App() {
   if (!isBusy) {
     return (
       <>
+        <div className="title-div">
+          <h1>MEMORY CARD</h1>
+          <p>
+            The point of the game is this: try and click the cards without
+            repeating your selections. If you reach a high score of 12, you win!
+            Go for it!
+          </p>
+        </div>
         <div className="game-screen">
           <h3>Current Score: {currentScore}</h3>
           <h3>High Score: {highScore}</h3>
