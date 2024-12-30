@@ -37,6 +37,10 @@ function App() {
   const [imageSourceUrlArray, setImageSourceUrlArray] = useState([]);
   const [clickedIds, setClickedIds] = useState([]);
 
+  const currentScore = clickedIds.length;
+
+  const [highScore, setHighScore] = useState(0);
+
   const [isBusy, setIsBusy] = useState(true);
 
   async function fetchAllBlobsAndAssign(data) {
@@ -63,6 +67,12 @@ function App() {
   useEffect(() => {
     fetchAllBlobsAndAssign(imageArray);
   }, []);
+
+  useEffect(() => {
+    if (highScore < currentScore) {
+      setHighScore(currentScore);
+    }
+  }, [highScore, currentScore]);
 
   function sortArrayByProperty(array) {
     function compare(a, b) {
@@ -123,7 +133,8 @@ function App() {
     return (
       <>
         <div className="game-screen">
-          <h3>Current Score: {clickedIds.length}</h3>
+          <h3>Current Score: {currentScore}</h3>
+          <h3>High Score: {highScore}</h3>
           <div className="game-container">
             {imageSourceUrlArray.map((item) => (
               <div key={item.id} className="card-component">
