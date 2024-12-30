@@ -15,6 +15,8 @@ async function fetchBlob(url) {
 
 function App() {
   const [imageSourceUrlArray, setImageSourceUrlArray] = useState([]);
+  const [clickedIds, setClickedIds] = useState([]);
+
   const [isBusy, setIsBusy] = useState(true);
 
   async function fetchAllBlobsAndAssign(data) {
@@ -42,14 +44,22 @@ function App() {
     fetchAllBlobsAndAssign(imageArray);
   }, []);
 
+  function handleClick(id) {
+    setClickedIds((clickedIds) => [...clickedIds, id]);
+  }
+
   if (!isBusy) {
     return (
       <>
+        <h3>Clicked Ids: {clickedIds}</h3>
         {imageSourceUrlArray.map((item) => (
           <div key={item.id} className="card-component">
             <h1>{item.displayName}</h1>
             <p>id: {item.id}</p>
             <img src={item.url} alt={item.displayName} />
+            <button onClick={() => handleClick(item.id)}>
+              Click To Select
+            </button>
           </div>
         ))}
       </>
